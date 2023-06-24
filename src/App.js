@@ -1,22 +1,41 @@
 // feature 1
 
-import './App.css';
+import React from "react";
 //import { Provider } from 'react-redux';
 //import store from './store';
 //import MenuItems from './components/MenuItems';
 //import ShoppingCart from './components/ShoppingCart';
+import data from './data.json';
+import Products from "./components/Products";
 
 
-function App() {
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      products: data.products,
+      size: "",
+      sort: "",
+    }
+  }
+  
+  render() {
   return (
-    <div>
+    <div className="grid-container">
       <header>
         <a href='/'>React Shopping Cart</a>
       </header>
-      <main>Product List</main>
+      <main>
+        <div className="content">
+        <div className="main">
+            <Products products = {this.state.products}></Products>
+        </div>
+        <div className="sidebar">Cart Items</div>
+        </div>
+      </main>
       <footer>All right is reserved.</footer>
     </div>    
-  );
-}
+  ); };
+};
 
 export default App;
